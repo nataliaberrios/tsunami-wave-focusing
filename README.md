@@ -18,9 +18,10 @@ driven by refraction over the offshore ridge.
 
 **`tsunami_utils.py`** — Shared numerical kernels (MacCormack solver, sponge functions)
 
-**`tsunami_demo.ipynb`** — Full walkthrough: Green's law validation for simple case, validation of sqrt(gH) showing wave speed slowing as wave approaches coast in simple case, convergence test in simple case, Mavericks wave focusing
+**`tsunami_demo.ipynb`** — Full walkthrough: Green's law validation for simple case, validation of sqrt(gH) 
+showing wave speed slowing as wave approaches coast in simple case, convergence test in simple case, Mavericks wave focusing when using real continental shelf bathymetry
 
-**`mavericks_bathy.nc`** — GEBCO 2026 bathymetry, northern California shelf (36.5–38.5°N, 124.5–121.5°W)
+**`mavericks_bathy.nc`** — GEBCO 2026 bathymetry, northern California shelf (36.5-38.5°N, 124.5-121.5°W)
 
 ## Installation
 
@@ -39,6 +40,10 @@ jupyter notebook tsunami_demo.ipynb
 Run cells top to bottom. Switches at the top of each section control
 the bathymetry type, source shape, and coast orientation.
 
+The notebook includes an optional grid convergence study (5 resolutions,
+N=300 to N=1500) that takes ~20 minutes. Set `RUN_CONVERGENCE = False`
+at the top of that cell to skip it during normal runs.
+
 ## Physics
 
 The simulation solves the 2D linear shallow-water equations using the
@@ -51,7 +56,7 @@ and concentrating energy at that location.
 ## Performance
 
 The MacCormack stepper is JIT-compiled with Numba (parallel=True),
-reducing runtime from ~10 minutes to ~12 seconds for the Mavericks
+reducing runtime for simple case simulations with large grids and for the Mavericks
 simulation (700x275 grid, ~10,000 timesteps).
 
 ## Data
@@ -63,4 +68,3 @@ GEBCO Compilation Group (2026) GEBCO 2026 Grid
 doi: 10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa
 
 The GEBCO Grid is in the public domain and free to use with attribution.
-Not for use in navigation or safety-at-sea applications.
