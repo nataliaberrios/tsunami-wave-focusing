@@ -55,7 +55,7 @@ and concentrating energy at that location.
 
 The MacCormack stepper is JIT-compiled with Numba (parallel=True),
 reducing runtime for simple case simulations with large grids and for the Mavericks
-simulation (700x275 grid, ~10,000 timesteps).
+simulation (700x275 grid, 4000 sec simulation). Note that sometimes the wave height in the Mavericks simulation appear to blowup, but this only happens if the kernel was not restarted before running the notebook from top to bottom.
 
 ## Data
 
