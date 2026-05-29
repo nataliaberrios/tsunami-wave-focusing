@@ -4,8 +4,6 @@
 Mavericks, California focuses incoming wave energy onto that stretch of
 coastline compared to adjacent areas.
 
-Built for GP 145/245 Computational Geophysics, Stanford University.
-
 ## Scientific question
 
 Does the continental shelf bathymetry along the northern California coast
