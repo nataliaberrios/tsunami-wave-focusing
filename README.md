@@ -1,16 +1,19 @@
-# Tsunami Wave Focusing at Mavericks
+# Tsunami propagation and wave focusing at Mavericks, CA
 
-2D shallow-water tsunami simulation showing how the underwater ridge at
-Mavericks, California focuses incoming wave energy onto that stretch of
+2D shallow-water tsunami simulation that attempts to reproduce theoretical tsunami propagation, and show how bathymetric variations at
+Mavericks, California focus incoming wave energy onto that stretch of
 coastline compared to adjacent areas.
 
 ## Scientific question
+How well do finite-difference shallow water models reproduce theoretical tsunami propagation?
+
+To explore this, the jupyter notebook creates figures comparing the simulation outputs to theoretical expressions for the wave speed (c = sqrt(gH)) and Green's law (which predicts how wave amplitude should increase as water depth decreases).
 
 Does the continental shelf bathymetry along the northern California coast
-preferentially focus long wavelength wave energy onto the Mavericks location?
+preferentially focus waves onto the Mavericks location?
 
-Running the Mavericks simulation should demonstrate that the answer to this question: yes, peak coastal amplitude occurs within 5 km of Mavericks,
-driven by refraction over the offshore ridge.
+Running the Mavericks simulation in the Jupyter notebook demonstrates that the answer to this question: yes, peak coastal amplitude occurs within 5 km of Mavericks,
+probably due to waves traveling over an offshore ridge as they approach the coast.
 
 ## Files
 
@@ -46,16 +49,16 @@ at the top of that cell to skip it during normal runs.
 
 The simulation solves the 2D linear shallow-water equations using the
 MacCormack predictor-corrector scheme (2nd order in space and time).
-The depth-dependent wave speed c = sqrt(gH) causes refraction: as the
-wavefront crosses the continental shelf, the portion over the shallower
-Mavericks ridge slows relative to adjacent areas, bending the wavefront
+Wave speed depends on depth through c = sqrt(gH). As the
+wavefront crosses the continental shelf, the portion over a shallower
+bathymetric ridge slows relative to adjacent areas, bending the wavefront
 and concentrating energy at that location.
 
 ## Performance
 
 The MacCormack stepper is JIT-compiled with Numba (parallel=True),
 reducing runtime for simple case simulations with large grids and for the Mavericks
-simulation (700x275 grid, 4000 sec simulation). Note that sometimes the wave height in the Mavericks simulation appear to blowup, but this only happens if the kernel was not restarted before running the notebook from top to bottom.
+simulation (700x275 grid, 4000 second simulation). Note that sometimes the wave height in the Mavericks simulation appear to blowup, but this seems to only happen if the kernel was not restarted before running the notebook from top to bottom.
 
 ## Data
 
