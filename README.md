@@ -7,7 +7,7 @@ coastline compared to adjacent areas.
 ## Scientific question
 How well do finite-difference shallow water models reproduce theoretical tsunami propagation?
 
-To explore this, the jupyter notebook creates figures comparing the simulation outputs to theoretical expressions for the wave speed (c = sqrt(gH)) and Green's law (which predicts how wave amplitude should increase as water depth decreases).
+To explore this, the jupyter notebook creates figures comparing the simulation outputs to theoretical expressions for the wave speed (c = sqrt(gH)) and Green's law (which predicts how wave amplitude should increase as water depth decreases, shown in wave shoaling amplification plot). Note that the simulations appear not to agree well with the wave height predicted by Green's law. This is likely because Green's law is most applicable to a case in which a plane wave propagates normal to the coast in 1D, so the discrepency might be due to geometric spreading in two dimensions or reflections from the domain boundaries that have not been completely dampened by the absorbing boundary conditions. 
 
 Does the continental shelf bathymetry along the northern California coast
 preferentially focus waves onto the Mavericks location?
@@ -58,7 +58,7 @@ and concentrating energy at that location.
 
 The MacCormack stepper is JIT-compiled with Numba (parallel=True),
 reducing runtime for simple case simulations with large grids and for the Mavericks
-simulation (700x275 grid, 4000 second simulation). Note that sometimes the wave height in the Mavericks simulation appear to blowup, but this seems to only happen if the kernel was not restarted before running the notebook from top to bottom.
+simulation (700x275 grid, 4000 second simulation). Given that ncol > nrows in the Mavericks simulation, which is the most computationally expensive case, it makes the most sense to parallelize the parts of the code that loops over i. Note that sometimes the wave height in the Mavericks simulation appear to blowup, but this seems to only happen if the kernel was not restarted before running the notebook from top to bottom.
 
 ## Data
 
